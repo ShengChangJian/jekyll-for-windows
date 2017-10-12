@@ -1,0 +1,67 @@
+have_func: checking for rb_enc_raise() in ruby.h... -------------------- yes
+
+"gcc -o conftest.exe -ID:/ProgramTools/Ruby2_0/Ruby200/include/ruby-2.0.0/i386-mingw32 -ID:/ProgramTools/Ruby2_0/Ruby200/include/ruby-2.0.0/ruby/backward -ID:/ProgramTools/Ruby2_0/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LD:/ProgramTools/Ruby2_0/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <winsock2.h>
+4: #include <windows.h>
+5: int main(int argc, char **argv)
+6: {
+7:   return 0;
+8: }
+/* end */
+
+"gcc -o conftest.exe -ID:/ProgramTools/Ruby2_0/Ruby200/include/ruby-2.0.0/i386-mingw32 -ID:/ProgramTools/Ruby2_0/Ruby200/include/ruby-2.0.0/ruby/backward -ID:/ProgramTools/Ruby2_0/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LD:/ProgramTools/Ruby2_0/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:9:57: error: 'rb_enc_raise' undeclared (first use in this function)
+conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:9:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: #include <ruby.h>
+ 6: 
+ 7: /*top*/
+ 8: extern int t(void);
+ 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_enc_raise; return 0; }
+10: int main(int argc, char **argv)
+11: {
+12:   if (argc > 1000000) {
+13:     printf("%p", &t);
+14:   }
+15: 
+16:   return 0;
+17: }
+/* end */
+
+"gcc -o conftest.exe -ID:/ProgramTools/Ruby2_0/Ruby200/include/ruby-2.0.0/i386-mingw32 -ID:/ProgramTools/Ruby2_0/Ruby200/include/ruby-2.0.0/ruby/backward -ID:/ProgramTools/Ruby2_0/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LD:/ProgramTools/Ruby2_0/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:9:1: warning: implicit declaration of function 'rb_enc_raise' [-Wimplicit-function-declaration]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: #include <ruby.h>
+ 6: 
+ 7: /*top*/
+ 8: extern int t(void);
+ 9: int t(void) { rb_enc_raise(); return 0; }
+10: int main(int argc, char **argv)
+11: {
+12:   if (argc > 1000000) {
+13:     printf("%p", &t);
+14:   }
+15: 
+16:   return 0;
+17: }
+/* end */
+
+--------------------
+

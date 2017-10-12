@@ -1,0 +1,5 @@
+D:/ProgramTools/Ruby2_0/Ruby200/lib/ruby/gems/2.0.0/gems/libv8-3.16.14.15/patches/disable-building-tests.patch
+D:/ProgramTools/Ruby2_0/Ruby200/lib/ruby/gems/2.0.0/gems/libv8-3.16.14.15/patches/disable-werror-on-osx.patch
+D:/ProgramTools/Ruby2_0/Ruby200/lib/ruby/gems/2.0.0/gems/libv8-3.16.14.15/patches/do-not-imply-vfp3-and-armv7.patch
+D:/ProgramTools/Ruby2_0/Ruby200/lib/ruby/gems/2.0.0/gems/libv8-3.16.14.15/patches/do-not-use-vfp2.patch
+D:/ProgramTools/Ruby2_0/Ruby200/lib/ruby/gems/2.0.0/gems/libv8-3.16.14.15/patches/fPIC-for-static.patch
